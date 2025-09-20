@@ -1,12 +1,23 @@
 pipeline {
-  agent any
-  stages {
-    stage('Run Batch Script') {
-      steps {
-        bat 'hello.bat'
-        archiveArtifacts artifacts: 'run_output.txt', onlyIfSuccessful: true
-      }
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                bat 'hello.cmd'   // or 'echo Hello World' for Windows
+            }
+        }
+        stage('Test') {
+            steps {
+                echo 'Running tests...'
+            }
+        }
+        stage('Deploy') {
+            steps {
+                echo 'Deploying...'
+            }
+        }
     }
-  }
 }
 
