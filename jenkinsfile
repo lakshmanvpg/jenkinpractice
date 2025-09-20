@@ -1,10 +1,9 @@
 pipeline {
   agent any
   stages {
-    stage('Run Shell Script') {
+    stage('Run Batch Script') {
       steps {
-        sh 'chmod +x hello.sh'      // make script executable
-        sh './hello.sh'             // run the script
+        bat 'hello.bat'
         archiveArtifacts artifacts: 'run_output.txt', onlyIfSuccessful: true
       }
     }
